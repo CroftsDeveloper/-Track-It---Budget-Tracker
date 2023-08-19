@@ -1,0 +1,31 @@
+/* Resetting some default styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for the main app */
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Styling for the income section */
+#income-section {
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+}
+
+/* Styling for the add income button */
+#add-income {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
