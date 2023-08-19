@@ -20,10 +20,17 @@ section {
 }
 
 /* Styling for the edit and delete buttons */
-.edit-button, .delete-button {
+.edit-button,
+.delete-button {
     background-color: #f0ad4e;
     color: white;
     padding: 5px 10px;
     border: none;
     cursor: pointer;
+}
+
+/* Styling for the summary section */
+#summary-section {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
 }
