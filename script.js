@@ -1,40 +1,37 @@
-// Function to create a new income or expense item
-function createListItem(type, description, amount) {
-    // Create a new div for the list item
-    const listItem = document.createElement('div');
-    
-    // Create divs for the description and amount
-    const descriptionDiv = document.createElement('div');
-    const amountDiv = document.createElement('div'); 
+// Event listener to handle income form submission
+document.getElementById('add-income-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('income-name').value;
+    const amount = document.getElementById('income-amount').value;
+    addIncome(name, amount); // Call addIncome function
+});
 
- // Assign the description and amount to the respective divs
-    descriptionDiv.innerText = description;
-    amountDiv.innerText = amount;
+// Event listener to handle expense form submission
+document.getElementById('add-expense-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('expense-name').value;
+    const amount = document.getElementById('expense-amount').value;
+    addExpense(name, amount); // Call addExpense function
+});
 
-// Create an edit button
-    const editButton = document.createElement('button');
-    editButton.innerText = 'Edit';
-    editButton.className = 'edit-button';
-
-// Append the description, amount, and edit button to the list item
-    listItem.appendChild(descriptionDiv);
-    listItem.appendChild(amountDiv);
-    listItem.appendChild(editButton);
-
-// Append the list item to the appropriate section
-    if (type === 'income') {
-        document.getElementById('income-list').appendChild(listItem);
-    } else {
-        document.getElementById('expenses-list').appendChild(listItem);
-    }
+// Function to add income to the list and delete button functionality
+function addIncome(name, amount) {
+    const incomeList = document.getElementById('income-list');
+    const li = document.createElement('li');
+    li.innerHTML = `Name: ${name}, Amount: £${amount} <button class="delete-button">Delete</button>`;
+    incomeList.appendChild(li);
+    li.querySelector('.delete-button').addEventListener('click', function() {
+        incomeList.removeChild(li); // Remove list item on delete button click
+    });
 }
 
-// Event listener for the "Add Income" button
-document.getElementById('add-income').addEventListener('click', () => {
-    createListItem('income', 'Salary', '£2000');
-});
-
-// Event listener for the "Add Expense" button
-document.getElementById('add-expense').addEventListener('click', () => {
-    createListItem('expense', 'Groceries', '£100');
-});
+// Function to add expense to the list and delete button functionality
+function addExpense(name, amount) {
+    const expenseList = document.getElementById('expense-list');
+    const li = document.createElement('li');
+    li.innerHTML = `Name: ${name}, Amount: £${amount} <button class="delete-button">Delete</button>`;
+    expenseList.appendChild(li);
+    li.querySelector('.delete-button').addEventListener('click', function() {
+        expenseList.removeChild(li); // Remove list item on delete button click
+    });
+}

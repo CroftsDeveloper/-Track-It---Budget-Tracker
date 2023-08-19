@@ -19,8 +19,8 @@ section {
     margin: 20px 0;
 }
 
-/* Styling for the edit button */
-.edit-button {
+/* Styling for the edit and delete buttons */
+.edit-button, .delete-button {
     background-color: #f0ad4e;
     color: white;
     padding: 5px 10px;
