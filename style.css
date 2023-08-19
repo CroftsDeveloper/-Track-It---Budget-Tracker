@@ -1,4 +1,4 @@
-/* Resetting some default styles */
+/* Basic styling for the application */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -6,28 +6,24 @@ body {
     padding: 0;
 }
 
-/* Container for the main app */
 #app {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
     background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Styling for the income section */
-#income-section,
-#expenses-section {
-    border-bottom: 1px solid #ccc;
-    padding: 20px 0;
+section {
+    margin: 20px 0;
 }
 
-/* Styling for the add income and add expense buttons */
-#add-income,
-#add-expense {
-    background-color: #4CAF50;
+/* Styling for the edit button */
+.edit-button {
+    background-color: #f0ad4e;
     color: white;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: none;
     cursor: pointer;
 }
