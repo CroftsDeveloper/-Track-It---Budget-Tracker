@@ -16,13 +16,15 @@ body {
 }
 
 /* Styling for the income section */
-#income-section {
+#income-section,
+#expenses-section {
     border-bottom: 1px solid #ccc;
     padding: 20px 0;
 }
 
-/* Styling for the add income button */
-#add-income {
+/* Styling for the add income and add expense buttons */
+#add-income,
+#add-expense {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
