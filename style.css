@@ -34,3 +34,26 @@ section {
     border-top: 1px solid #ccc;
     padding-top: 20px;
 }
+
+/* Responsive styling */
+@media only screen and (max-width: 600px) {
+    #app {
+        padding: 10px;
+        box-shadow: none;
+    }
+
+    section {
+        margin: 10px 0;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label,
+    input,
+    button {
+        margin-bottom: 10px;
+    }
+}
