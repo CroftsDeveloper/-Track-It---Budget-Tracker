@@ -3,7 +3,7 @@ document.getElementById('add-income-form').addEventListener('submit', function(e
     e.preventDefault();
     const name = document.getElementById('income-name').value;
     const amount = parseFloat(document.getElementById('income-amount').value);
-    addItem('income', name, amount);
+    addIncome(name, amount);
     updateSummary();
 });
 
@@ -12,46 +12,64 @@ document.getElementById('add-expense-form').addEventListener('submit', function(
     e.preventDefault();
     const name = document.getElementById('expense-name').value;
     const amount = parseFloat(document.getElementById('expense-amount').value);
-    addItem('expense', name, amount);
+    addExpense(name, amount);
     updateSummary();
 });
 
-function addItem(type, name, amount) {
-    const list = document.getElementById(`${type}-list`);
-    const li = createListItem(name, amount);
-    list.appendChild(li);
+// Function to add income
+function addIncome(name, amount) {
+    const incomeList = document.getElementById('income-list');
+    const li = document.createElement('li');
+    li.innerHTML = `Name: ${name}, Amount: ${formatCurrency(amount)} <button class="delete-button">Delete</button>`;
+    incomeList.appendChild(li);
     li.querySelector('.delete-button').addEventListener('click', function() {
-        list.removeChild(li);
+        incomeList.removeChild(li);
         updateSummary();
     });
 }
 
-function createListItem(name, amount) {
+// Function to add expense
+function addExpense(name, amount) {
+    const expenseList = document.getElementById('expense-list');
     const li = document.createElement('li');
-    li.innerHTML = `Name: ${name}, Amount: <span class="amount">£${amount.toFixed(2)}</span> <button class="delete-button">Delete</button>`;
-    return li;
+    li.innerHTML = `Name: ${name}, Amount: ${formatCurrency(amount)} <button class="delete-button">Delete</button>`;
+    expenseList.appendChild(li);
+    li.querySelector('.delete-button').addEventListener('click', function() {
+        expenseList.removeChild(li);
+        updateSummary();
+    });
 }
 
+// Function to format currency
+function formatCurrency(amount) {
+    const currencySymbol = document.getElementById('currency').value;
+    return `${currencySymbol}${amount.toFixed(2)}`;
+}
+
+// Function to update summary
 function updateSummary() {
     let totalIncome = 0;
     let totalExpenses = 0;
-    const currencySymbol = document.getElementById('currency').value;
 
-    // Calculate total income
-    document.querySelectorAll('#income-list .amount').forEach(item => {
-        totalIncome += parseFloat(item.textContent.substring(1));
+    document.querySelectorAll('#income-list li').forEach(item => {
+        const amount = item.textContent.match(/\d+\.\d+/);
+        if (amount) {
+            totalIncome += parseFloat(amount[0]);
+        }
     });
 
-    // Calculate total expenses
-    document.querySelectorAll('#expense-list .amount').forEach(item => {
-        totalExpenses += parseFloat(item.textContent.substring(1));
+    document.querySelectorAll('#expense-list li').forEach(item => {
+        const amount = item.textContent.match(/\d+\.\d+/);
+        if (amount) {
+            totalExpenses += parseFloat(amount[0]);
+        }
     });
 
     const balance = totalIncome - totalExpenses;
 
-    document.getElementById('total-income').textContent = `${currencySymbol}${totalIncome.toFixed(2)}`;
-    document.getElementById('total-expenses').textContent = `${currencySymbol}${totalExpenses.toFixed(2)}`;
-    document.getElementById('balance').textContent = `${currencySymbol}${balance.toFixed(2)}`;
+    document.getElementById('total-income').textContent = formatCurrency(totalIncome);
+    document.getElementById('total-expenses').textContent = formatCurrency(totalExpenses);
+    document.getElementById('balance').textContent = formatCurrency(balance);
 }
 
 // Event listener for currency selection
