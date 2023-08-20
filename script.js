@@ -52,17 +52,11 @@ function updateSummary() {
     let totalExpenses = 0;
 
     document.querySelectorAll('#income-list li').forEach(item => {
-        const amount = item.textContent.match(/\d+\.\d+/);
-        if (amount) {
-            totalIncome += parseFloat(amount[0]);
-        }
+        totalIncome += parseFloat(item.textContent.split(' ')[3].substring(1));
     });
 
     document.querySelectorAll('#expense-list li').forEach(item => {
-        const amount = item.textContent.match(/\d+\.\d+/);
-        if (amount) {
-            totalExpenses += parseFloat(amount[0]);
-        }
+        totalExpenses += parseFloat(item.textContent.split(' ')[3].substring(1));
     });
 
     const balance = totalIncome - totalExpenses;
@@ -74,3 +68,20 @@ function updateSummary() {
 
 // Event listener for currency selection
 document.getElementById('currency').addEventListener('change', updateSummary);
+
+// Event listener for "Delete All" button
+document.getElementById('delete-all-btn').addEventListener('click', function() {
+    const confirmation = confirm('Are you sure you want to delete all income and expenses? This action cannot be undone.');
+    if (confirmation) {
+        // Clear income and expense lists
+        document.getElementById('income-list').innerHTML = '';
+        document.getElementById('expense-list').innerHTML = '';
+        // Clear input fields
+        document.getElementById('income-name').value = '';
+        document.getElementById('income-amount').value = '';
+        document.getElementById('expense-name').value = '';
+        document.getElementById('expense-amount').value = '';
+        // Update summary
+        updateSummary();
+    }
+});
