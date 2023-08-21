@@ -2,60 +2,63 @@
 <html lang="en-GB">
 
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track It - Budget Tracker</title>
+    <title>Track It</title>
+    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-    <!-- Main container for the application -->
-    <div id="app">
-        <!-- Currency Selection -->
+    <!-- Main container for the app -->
+    <div class="container">
+        <h1>Track It</h1>
+        <!-- Dropdown for currency selection -->
         <div class="currency-selection">
             <label for="currency">Choose Currency:</label>
             <select id="currency">
-                <option value="£">£ (GBP)</option>
-                <option value="$">$ (USD)</option>
-                <option value="€">€ (EUR)</option>
+                <option value="GBP" selected>£ (GBP)</option>
+                <option value="EUR">€ (EUR)</option>
+                <option value="USD">$ (USD)</option>
             </select>
         </div>
-        <!-- Income Section -->
-        <section id="income-section">
+        <!-- Income section -->
+        <div class="income-section">
             <h2>Income</h2>
-            <!-- Form to add income -->
-            <form id="add-income-form">
-                <label for="income-name">Name:</label>
-                <input type="text" id="income-name" required>
+            <form id="income-form">
+                <label for="income-description">Description:</label>
+                <input type="text" id="income-description" required>
                 <label for="income-amount">Amount:</label>
                 <input type="number" id="income-amount" required>
-                <button type="submit">Add Income</button>
+                <button type="submit" class="add-btn">Add Income</button>
+                <button type="button" id="update-income-btn" class="update-btn" hidden>Update Income</button>
             </form>
             <ul id="income-list"></ul>
-        </section>
-        <!-- Expenses Section -->
-        <section id="expenses-section">
+        </div>
+        <!-- Expenses section -->
+        <div class="expenses-section">
             <h2>Expenses</h2>
-            <!-- Form to add expenses -->
-            <form id="add-expense-form">
-                <label for="expense-name">Name:</label>
-                <input type="text" id="expense-name" required>
+            <form id="expense-form">
+                <label for="expense-description">Description:</label>
+                <input type="text" id="expense-description" required>
                 <label for="expense-amount">Amount:</label>
                 <input type="number" id="expense-amount" required>
-                <button type="submit">Add Expense</button>
+                <button type="submit" class="add-btn">Add Expense</button>
+                <button type="button" id="update-expense-btn" class="update-btn" hidden>Update Expense</button>
             </form>
             <ul id="expense-list"></ul>
-        </section>
-        <!-- Summary Section -->
-        <section id="summary-section">
-            <h2>Summary</h2>
-            <p>Total Income: <span id="total-income">£0.00</span></p>
-            <p>Total Expenses: <span id="total-expenses">£0.00</span></p>
-            <p>Balance: <span id="balance">£0.00</span></p>
-            <button id="delete-all-btn">Delete All</button> <!-- Added Delete All Button -->
-        </section>
+        </div>
+        <!-- Summary section showing total income, expenses, and balance -->
+        <div class="summary">
+            <p>Total Income: <span id="total-income">0</span></p>
+            <p>Total Expenses: <span id="total-expenses">0</span></p>
+            <p>Balance: <span id="balance">0</span></p>
+        </div>
+        <!-- Button to reset the tracker -->
+        <button id="reset-tracker" class="reset-btn">Reset Tracker</button>
     </div>
+    <!-- Link to the external JS file -->
     <script src="script.js"></script>
 </body>
 

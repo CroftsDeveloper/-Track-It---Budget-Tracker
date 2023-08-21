@@ -1,59 +1,182 @@
-/* Basic styling for the application */
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-color: #e6f7ff;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container styling */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Headers styling */
+h1,
+h2 {
+    color: #333333;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Currency selection styling */
+.currency-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.currency-selection label {
+    margin-right: 10px;
+}
+
+.currency-selection select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+
+/* Income and Expenses sections styling */
+.income-section,
+.expenses-section {
+    margin-bottom: 30px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Label and Input styling */
+label,
+input {
+    margin: 5px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+/* Button styling */
+button.add-btn,
+button.update-btn,
+button.reset-btn {
+    padding: 10px 20px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    align-self: flex-end;
+}
+
+button.add-btn {
+    background-color: #1E90FF;
+}
+
+button.add-btn:hover {
+    background-color: #157ab5;
+}
+
+button.update-btn {
+    background-color: #228B22;
+}
+
+button.update-btn:hover {
+    background-color: #186a18;
+}
+
+button.reset-btn {
+    background-color: #FF4500;
+}
+
+button.reset-btn:hover {
+    background-color: #e03d00;
+}
+
+/* List styling */
+ul {
+    list-style-type: none;
     padding: 0;
 }
 
-#app {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 5px 0;
 }
 
-section {
-    margin: 20px 0;
+/* List item details */
+li .description,
+li .amount {
+    width: 35%;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-/* Styling for the edit and delete buttons */
-.edit-button,
-.delete-button {
-    background-color: #f0ad4e;
-    color: white;
+li .actions {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* List item button styling */
+li button {
     padding: 5px 10px;
+    font-size: 0.8em;
+    background-color: #555555;
+    color: #ffffff;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 5px;
 }
 
-/* Styling for the summary section */
-#summary-section {
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
+li button:last-child {
+    margin-right: 0;
 }
 
-/* Responsive styling */
-@media only screen and (max-width: 600px) {
-    #app {
-        padding: 10px;
-        box-shadow: none;
-    }
+/* Summary section styling */
+.summary {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 30px;
+    padding-top: 10px;
+}
 
-    section {
-        margin: 10px 0;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    label,
-    input,
-    button {
-        margin-bottom: 10px;
-    }
+.summary p {
+    margin: 10px;
+    font-size: 18px;
+    color: #333333;
 }
