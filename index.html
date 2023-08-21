@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- Main container for the application -->
     <div id="app">
         <!-- Currency Selection -->
         <div class="currency-selection">
@@ -23,6 +24,7 @@
         <!-- Income Section -->
         <section id="income-section">
             <h2>Income</h2>
+            <!-- Form to add income -->
             <form id="add-income-form">
                 <label for="income-name">Name:</label>
                 <input type="text" id="income-name" required>
@@ -35,6 +37,7 @@
         <!-- Expenses Section -->
         <section id="expenses-section">
             <h2>Expenses</h2>
+            <!-- Form to add expenses -->
             <form id="add-expense-form">
                 <label for="expense-name">Name:</label>
                 <input type="text" id="expense-name" required>
@@ -50,8 +53,8 @@
             <p>Total Income: <span id="total-income">£0.00</span></p>
             <p>Total Expenses: <span id="total-expenses">£0.00</span></p>
             <p>Balance: <span id="balance">£0.00</span></p>
+            <button id="delete-all-btn">Delete All</button> <!-- Added Delete All Button -->
         </section>
-        <button id="delete-all-btn">Delete All</button>
     </div>
     <script src="script.js"></script>
 </body>

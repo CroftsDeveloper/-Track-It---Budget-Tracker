@@ -19,25 +19,34 @@ document.getElementById('add-expense-form').addEventListener('submit', function(
 // Function to add income
 function addIncome(name, amount) {
     const incomeList = document.getElementById('income-list');
-    const li = document.createElement('li');
-    li.innerHTML = `Name: ${name}, Amount: ${formatCurrency(amount)} <button class="delete-button">Delete</button>`;
+    const li = createListItem(name, amount);
     incomeList.appendChild(li);
-    li.querySelector('.delete-button').addEventListener('click', function() {
-        incomeList.removeChild(li);
-        updateSummary();
-    });
 }
 
 // Function to add expense
 function addExpense(name, amount) {
     const expenseList = document.getElementById('expense-list');
-    const li = document.createElement('li');
-    li.innerHTML = `Name: ${name}, Amount: ${formatCurrency(amount)} <button class="delete-button">Delete</button>`;
+    const li = createListItem(name, amount);
     expenseList.appendChild(li);
-    li.querySelector('.delete-button').addEventListener('click', function() {
-        expenseList.removeChild(li);
+}
+
+function createListItem(name, amount) {
+    const li = document.createElement('li');
+    li.innerHTML = `Name: ${name}, Amount: ${formatCurrency(amount)} <button class="edit-button">Edit</button> <button class="delete-button">Delete</button>`;
+    
+    li.querySelector('.edit-button').addEventListener('click', function() {
+        const newName = prompt("Edit name:", name);
+        const newAmount = parseFloat(prompt("Edit amount:", amount));
+        li.innerHTML = `Name: ${newName}, Amount: ${formatCurrency(newAmount)} <button class="edit-button">Edit</button> <button class="delete-button">Delete</button>`;
         updateSummary();
     });
+
+    li.querySelector('.delete-button').addEventListener('click', function() {
+        li.parentNode.removeChild(li);
+        updateSummary();
+    });
+
+    return li;
 }
 
 // Function to format currency
@@ -66,22 +75,15 @@ function updateSummary() {
     document.getElementById('balance').textContent = formatCurrency(balance);
 }
 
-// Event listener for currency selection
-document.getElementById('currency').addEventListener('change', updateSummary);
-
-// Event listener for "Delete All" button
+// Event listener for delete all button
 document.getElementById('delete-all-btn').addEventListener('click', function() {
     const confirmation = confirm('Are you sure you want to delete all income and expenses? This action cannot be undone.');
     if (confirmation) {
-        // Clear income and expense lists
         document.getElementById('income-list').innerHTML = '';
         document.getElementById('expense-list').innerHTML = '';
-        // Clear input fields
-        document.getElementById('income-name').value = '';
-        document.getElementById('income-amount').value = '';
-        document.getElementById('expense-name').value = '';
-        document.getElementById('expense-amount').value = '';
-        // Update summary
         updateSummary();
     }
 });
+
+// Event listener for currency selection
+document.getElementById('currency').addEventListener('change', updateSummary);
