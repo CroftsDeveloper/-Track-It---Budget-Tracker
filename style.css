@@ -180,3 +180,46 @@ li button:last-child {
     font-size: 18px;
     color: #333333;
 }
+
+/* Tablet Styling (screens with a width between 600px and 900px) */
+@media screen and (max-width: 900px) {
+    .container {
+        width: 90%;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    label,
+    input {
+        width: 100%;
+    }
+
+    button.add-btn,
+    button.update-btn,
+    button.reset-btn {
+        align-self: center;
+    }
+}
+
+/* Mobile Styling (screens with a width of 600px or less) */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .summary p {
+        font-size: 16px;
+    }
+}
