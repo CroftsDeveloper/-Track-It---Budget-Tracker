@@ -23,7 +23,7 @@
         const amount = parseFloat(document.getElementById(`${type}-amount`).value);
         type === 'income' ? addIncome(description, amount) : addExpense(description, amount);
         calculateTotal();
-        this.reset();
+        document.getElementById(`${type}-form`).reset();  // Clear the input fields
         saveToLocalStorage();
     }
 
@@ -61,8 +61,10 @@
         const editButton = createActionButton('Edit', function () {
             editItem(li, descriptionDiv, amountDiv, type);
         }, 'Edit item');
+        
         const deleteButton = createActionButton('Delete', function () {
             li.remove();
+            document.getElementById(`${type}-form`).reset();  // Clear the input fields after delete
             calculateTotal();
             saveToLocalStorage();
         }, 'Delete item');
@@ -117,13 +119,13 @@
     }
     
     // Function to format currency
-function formatCurrency(amount) {
-    const currencySelect = document.getElementById('currency');
-    const selectedOption = currencySelect.options[currencySelect.selectedIndex];
-    const currencyCode = selectedOption.value || 'GBP'; // Default to GBP if not set
-    const currencySymbol = currencySymbols[currencyCode];
-    return currencySymbol + amount.toFixed(2);
-}
+    function formatCurrency(amount) {
+        const currencySelect = document.getElementById('currency');
+        const selectedOption = currencySelect.options[currencySelect.selectedIndex];
+        const currencyCode = selectedOption.value || 'GBP'; // Default to GBP if not set
+        const currencySymbol = currencySymbols[currencyCode];
+        return currencySymbol + amount.toFixed(2);
+    }
 
     // Function to calculate total income, expenses, and balance
     function calculateTotal() {
