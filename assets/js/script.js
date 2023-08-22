@@ -1,9 +1,16 @@
 (function () {
-    // Mapping between currency codes and symbols
+    // Updated mapping between currency codes and symbols
     const currencySymbols = {
         'GBP': '£',
         'EUR': '€',
-        'USD': '$'
+        'USD': '$',
+        'JPY': '¥',
+        'AUD': 'A$',
+        'CAD': 'C$',
+        'CHF': 'CHF',
+        'CNY': '¥',
+        'SEK': 'kr',
+        'NZD': 'NZ$'
     };
 
     // Event listener for income form submission
