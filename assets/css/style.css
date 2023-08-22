@@ -1,6 +1,8 @@
 /* General body styling */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    /* Regular text weight */
     background-color: #e6f7ff;
     margin: 0;
     display: flex;
@@ -24,11 +26,12 @@ body {
 h1,
 h2 {
     color: #333333;
+    font-weight: 700;
+    /* Bold weight for headers */
 }
 
 h1 {
     margin-bottom: 30px;
-    font-weight: 400;
 }
 
 h2 {
