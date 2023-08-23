@@ -1,8 +1,6 @@
-/* General body styling */
+/* General styling */
 body {
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    /* Regular text weight */
     background-color: #e6f7ff;
     margin: 0;
     display: flex;
@@ -11,7 +9,13 @@ body {
     min-height: 100vh;
 }
 
-/* Container styling */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Styling for the main container */
 .container {
     background-color: #ffffff;
     padding: 30px;
@@ -22,24 +26,24 @@ body {
     max-width: 700px;
 }
 
-/* Headers styling */
+/* Styling for headers */
 h1,
 h2 {
     color: #333333;
-    font-weight: 700;
-    /* Bold weight for headers */
 }
 
 h1 {
     margin-bottom: 30px;
+    font-weight: 700;
 }
 
 h2 {
     margin-bottom: 20px;
     border-bottom: 1px solid #e0e0e0;
+    font-weight: 700;
 }
 
-/* Currency selection styling */
+/* Styling for the currency selector */
 .currency-selection {
     display: flex;
     justify-content: center;
@@ -57,13 +61,13 @@ h2 {
     border: 1px solid #cccccc;
 }
 
-/* Income and Expenses sections styling */
+/* Styling for the income and expenses sections */
 .income-section,
 .expenses-section {
     margin-bottom: 30px;
 }
 
-/* Form styling */
+/* Styling for the forms */
 form {
     display: flex;
     flex-wrap: wrap;
@@ -72,7 +76,6 @@ form {
     margin-bottom: 20px;
 }
 
-/* Label and Input styling */
 label,
 input {
     margin: 5px;
@@ -85,7 +88,17 @@ input {
     flex-grow: 1;
 }
 
-/* Button styling */
+/* focus styles */
+input:focus,
+select:focus,
+button:focus {
+    outline: none;
+    /* Removing default browser outline */
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    /* blue focus glow */
+}
+
+/* Styling for buttons */
 button.add-btn,
 button.update-btn,
 button.reset-btn {
@@ -103,27 +116,24 @@ button.add-btn {
     background-color: #1E90FF;
 }
 
-button.add-btn:hover {
-    background-color: #157ab5;
-}
-
 button.update-btn {
     background-color: #228B22;
-}
-
-button.update-btn:hover {
-    background-color: #186a18;
 }
 
 button.reset-btn {
     background-color: #FF4500;
 }
 
-button.reset-btn:hover {
-    background-color: #e03d00;
+/* Hover and active effects */
+button:hover {
+    opacity: 0.9;
 }
 
-/* List styling */
+button:active {
+    transform: scale(0.97);
+}
+
+/* Styling for the list of incomes and expenses */
 ul {
     list-style-type: none;
     padding: 0;
@@ -138,7 +148,6 @@ li {
     margin: 5px 0;
 }
 
-/* List item details */
 li .description,
 li .amount {
     width: 35%;
@@ -154,37 +163,7 @@ li .actions {
     justify-content: space-between;
 }
 
-/* List item button styling */
-li button {
-    padding: 5px 10px;
-    font-size: 0.8em;
-    background-color: #555555;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 5px;
-}
-
-li button:last-child {
-    margin-right: 0;
-}
-
-/* Summary section styling */
-.summary {
-    border-top: 1px solid #e0e0e0;
-    margin-top: 30px;
-    padding-top: 10px;
-}
-
-.summary p {
-    margin: 10px;
-    font-size: 18px;
-    color: #333333;
-}
-
-/* Tablet Styling (screens with a width between 600px and 900px) */
+/* Adjustments for mobile and tablet views */
 @media screen and (max-width: 900px) {
     .container {
         width: 90%;
@@ -207,7 +186,6 @@ li button:last-child {
     }
 }
 
-/* Mobile Styling (screens with a width of 600px or less) */
 @media screen and (max-width: 600px) {
     .container {
         width: 95%;
