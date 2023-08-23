@@ -25,6 +25,24 @@
         handleFormSubmission('expense');
     });
 
+    // Capture "Enter" key press for income and expense forms
+    document.getElementById('income-form').addEventListener('keydown', function (e) {
+        handleEnterKey(e, 'income');
+    });
+    document.getElementById('expense-form').addEventListener('keydown', function (e) {
+        handleEnterKey(e, 'expense');
+    });
+
+    function handleEnterKey(e, type) {
+        const isEnterKey = e.key === 'Enter' || e.keyCode === 13;
+        const updateButton = document.querySelector(`#${type}-form .update-btn`);
+        // If "Enter" is pressed while editing, use the update button's functionality
+        if (isEnterKey && !updateButton.hidden) {
+            e.preventDefault();
+            updateButton.click();
+        }
+    }
+
     function handleFormSubmission(type) {
         const description = document.getElementById(`${type}-description`).value;
         const amount = parseFloat(document.getElementById(`${type}-amount`).value);
@@ -124,7 +142,7 @@
             }
         };
     }
-    
+
     // Function to format currency
     function formatCurrency(amount) {
         const currencySelect = document.getElementById('currency');
